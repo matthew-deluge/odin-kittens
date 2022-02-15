@@ -1,11 +1,11 @@
 class KittensController < ApplicationController
-
+  before_action :set_kitten, only: %i[ show edit update destroy ]
+  
   def index
     @kittens = Kitten.all
   end
 
   def show
-    @kitten = Kitten.find(params[:id])
   end
 
   def new
@@ -32,7 +32,7 @@ class KittensController < ApplicationController
   def update
     respond_to do |format|
       if @kitten.update(event_params)
-        format.html { redirect_to @event, notice: "Kitten was successfully updated." }
+        format.html { redirect_to @kitten, notice: "Kitten was successfully updated." }
         format.json { render :show, status: :ok, location: @kitten }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,6 +60,6 @@ class KittensController < ApplicationController
   def kitten_params
     params.require(:kitten).permit(:name, :age, :cuteness, :softness)
   end
-  
+
 end
 

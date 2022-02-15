@@ -1,0 +1,9 @@
+<h1> Kittens <h1>
+
+<% Kittens.all.each do |k| %>
+  <p><%= "Kitten Name: #{k.name}" %></p>
+  <p><%= "Kitten Age: #{k.age}" %></p>
+  <p><%= "Kitten Cuteness: #{k.cuteness}" %></p>
+  <p><%= "Kitten Softness: #{k.softness}" %></p>
+  <p><%= link_to k, method: :delete, data: {confirm: "Are you sure?"} %> </p>
+  <%end%>

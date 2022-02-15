@@ -16,10 +16,10 @@ class KittensController < ApplicationController
   end
 
   def create
-    @kitten = Kitten.new(params)
+    @kitten = Kitten.new(kitten_params)
 
       respond_to do |format|
-        if @event.save
+        if @kitten.save
           format.html { redirect_to @kitten, notice: "Kitten was successfully created." }
           format.json { render :show, status: :created, location: @kitten }
         else
@@ -45,7 +45,7 @@ class KittensController < ApplicationController
   def destroy
     @kitten.destroy
     respond_to do |format|
-      format.html { redirect_to kittens_url, notice: "Event was successfully destroyed." }
+      format.html { redirect_to kittens_url, notice: "Kitten was successfully destroyed." }
       format.json { head :no_content }
     end
   end
